@@ -21,6 +21,7 @@ input[type=number]{-moz-appearance:textfield}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<script src="https://pl28926513.effectivegatecpm.com/71/16/64/711664648aaf01bf8ff852640497a2ba.js"></script>
 </head>
 <body>
 <div id="root"></div>
@@ -541,13 +542,12 @@ function MainApp(props){
        kakao.adfit.showRewardedAd({ onComplete: function(){ setAdCredits(function(c){return c+3}); } });
        return;
        ============================================ */
-    var overlay=document.createElement("div");overlay.id="ad-overlay";
-    overlay.style.cssText="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:9999;display:flex;align-items:center;justify-content:center";
-    overlay.innerHTML='<div style="text-align:center;color:#fff;padding:40px"><div style="font-size:40px;margin-bottom:16px">\ud83d\udcfa</div><div style="font-size:18px;font-weight:800;margin-bottom:8px">\uad11\uace0 \uc2dc\uccad \uc911...</div><div id="ad-timer" style="font-size:48px;font-weight:900;color:#f5d76e">5</div><div style="font-size:11px;color:#8b85a0;margin-top:12px">\uad11\uace0\uac00 \ub05d\ub098\uba74 \ud06c\ub808\ub527 3\ud68c \ucda9\uc804\ub429\ub2c8\ub2e4</div></div>';
-    document.body.appendChild(overlay);
-    var sec=5;var ti=setInterval(function(){sec--;var el=document.getElementById("ad-timer");if(el)el.textContent=String(sec);if(sec<=0){clearInterval(ti);var ov=document.getElementById("ad-overlay");if(ov)ov.remove();setAdCredits(function(c){return c+3})}},1000);
-  },[]);
-
+var watchAd=useCallback(function(){
+  window.open("https://pl28926513.effectivegatecpm.com/71/16/64/711664648aaf01bf8ff852640497a2ba.js","_blank");
+  setTimeout(function(){
+    setAdCredits(function(c){return c+3});
+  },5000);
+},[]);
   var handleGen=useCallback(function(){if(computing)return;if(adCredits<=0){alert("\ud06c\ub808\ub527\uc774 \ubd80\uc871\ud569\ub2c8\ub2e4! \uad11\uace0\ub97c \uc2dc\uccad\ud574\uc8fc\uc138\uc694.");return}setAdCredits(function(c){return c-1});setComputing("gen");setProgress(0);setResults(null);
     var fn=genMode==="det"?Engine.detGenTask:genMode==="destiny"?Engine.destinyTask:Engine.genTask;
     fn(drawsRef.current,cfg,function(p){setProgress(p)},function(res){setResults(res);setAnimKey(function(k){return k+1});setComputing("");var entry={date:new Date().toISOString(),games:res.games,rars:res.rars,risk:cfg.risk,temp:cfg.temperature,mode:genMode,forDraw:drawsRef.current[drawsRef.current.length-1].no+1};setHistory(function(prev){return[entry].concat(prev).slice(0,50)})})},[computing,cfg,adCredits,genMode]);

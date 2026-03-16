@@ -554,7 +554,7 @@ var watchAd=useCallback(function(){
   var check=setInterval(function(){
     if(adWin&&adWin.closed){
       clearInterval(check);
-      setAdCredits(function(c){return c+3});
+      setAdCredits(function(c){return c+1});
     }
   },500);
 },[]);
